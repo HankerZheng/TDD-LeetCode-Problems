@@ -3,6 +3,8 @@ package com.hankerzheng.tddleet;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 
 public class CircularArrayLoopTest {
@@ -20,13 +22,40 @@ public class CircularArrayLoopTest {
     }
 
     @Test
-    public void shouldReturnTrueForExampleGive() throws Exception {
-        verify(new int[] {2, -1, 1, 2, 2}, true);
+    public void shouldReturnFalseIfOnlyOneElement() throws Exception {
+        // All positive integers have the same effect if there is only one element in the array
+        // So do all the negative integers
+        for (int i = -1; i < 2; i++) {
+            verify(false, i);
+        }
     }
 
-    private void verify(int[] nums, boolean expected) {
+    @Test
+    public void shouldReturnTrueIfNoPointPointsItself() throws Exception {
+        verify(true, 1,1,1,1,1);
+        verify(true, 2,2,2,2,2);
+        verify(true, -1, 1,-1,1);
+    }
+
+    @Test
+    public void shouldPassExampleCase() throws Exception {
+        verify(true, 2, -1, 1, 2, 2);
+        verify(false, -1, 2);
+    }
+
+    @Test
+    public void shouldReturnFalseIfEveryElementPointsItself() throws Exception {
+        verify(false, 0, 0, 0, 0, 0);
+    }
+    
+    @Test
+    public void shouldReturnTrueIfOnePointsItselfButCircleExists() throws Exception {
+        verify(true, 0, 1, -1);
+    }
+
+    private void verify(boolean expected, int... nums) {
         final boolean actual = circularArrayLoop.test(nums);
-        assertEquals(expected, actual);
+        assertEquals(Arrays.toString(nums), expected, actual);
     }
 
 }
