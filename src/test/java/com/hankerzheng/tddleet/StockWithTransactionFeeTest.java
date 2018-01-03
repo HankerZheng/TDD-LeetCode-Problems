@@ -21,6 +21,7 @@ public class StockWithTransactionFeeTest {
 
     @Test
     public void shouldReturn0IfOnlyOneDay() throws Exception {
+        verify(0, 0, 0);
         verify(0, 0, 1);
         verify(0, 10,1);
         verify(0, 1, 1);

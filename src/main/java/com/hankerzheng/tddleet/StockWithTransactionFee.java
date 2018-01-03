@@ -55,16 +55,6 @@ public class StockWithTransactionFee {
             return 0;
         }
 
-        // the code below can be optimized, since we only use the last two state, no need to create an array to hold data
-//        final int[][] maxProfit = new int[2][prices.length];
-//        maxProfit[0][0] = 0;
-//        maxProfit[1][0] = -prices[0];
-//        for (int day = 1; day < prices.length; day++) {
-//            maxProfit[0][day] = Math.max(maxProfit[0][day-1], maxProfit[1][day-1] + prices[day] - fee);
-//            maxProfit[1][day] = Math.max(maxProfit[1][day-1], maxProfit[0][day-1] - prices[day]);
-//        }
-//        return maxProfit[0][prices.length - 1];
-
         int haveStock = -prices[0];
         int noStock = 0;
         for (int day = 0; day < prices.length; day++) {
