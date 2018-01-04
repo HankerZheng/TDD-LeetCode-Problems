@@ -13,16 +13,8 @@ public class TwoValueMinPQItem implements Comparable<TwoValueMinPQItem> {
         return value;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
-
     public int getIndex() {
         return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
     }
 
     @Override

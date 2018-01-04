@@ -51,20 +51,28 @@ public class NthSumOfTwoPerfectSquare {
     public int nthSumOfPerfectSquare(int n) {
         final PriorityQueue<TwoValueMinPQItem> pq = new PriorityQueue<>();
         for (int i = 0; i < n; i++) {
-            pq.add(new TwoValueMinPQItem((i + 1) * (i + 1) + 1, 1));
+            int xAxisSquare = (i + 1) * (i + 1);
+            pq.add(new TwoValueMinPQItem(xAxisSquare + 1, 1));
         }
-        int ans = 0;
+        int candidate = 0;
         for (int i = 0; i < n; i++) {
             final TwoValueMinPQItem item = pq.poll();
-            ans = item.getValue();
-            int index = item.getIndex();
-            int base = ans - index * index;
-            item.setValue(ans + 2 * index + 1);
-            item.setIndex(index + 1);
-            if (item.getValue() <= base * 2) {
-                pq.add(item);
-            }
+            candidate = item.getValue();
+            int yAxis = item.getIndex();
+            int xAxisSquare = candidate - yAxis * yAxis;
+            pushItemAboveInPQ(pq, xAxisSquare,  yAxis);
         }
-        return ans;
+        return candidate;
+    }
+
+    private void pushItemAboveInPQ(PriorityQueue<TwoValueMinPQItem> pq, int xAxisSquare, int yAxis) {
+        int nextCandidate = xAxisSquare + (yAxis + 1) * (yAxis + 1);
+        if (isNextCandidateValid(xAxisSquare, nextCandidate)) {
+            pq.add(new TwoValueMinPQItem(nextCandidate, yAxis + 1));
+        }
+    }
+
+    private boolean isNextCandidateValid(int xAxisSquare, int nextCandidate) {
+        return nextCandidate <= xAxisSquare * 2;
     }
 }
