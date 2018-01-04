@@ -57,8 +57,8 @@ public class NthSumOfTwoPerfectSquare {
         int candidate = 0;
         for (int i = 0; i < n; i++) {
             final TwoValueMinPQItem item = pq.poll();
-            candidate = item.getValue();
-            int yAxis = item.getIndex();
+            candidate = item.getLeft();
+            int yAxis = item.getRight();
             int xAxisSquare = candidate - yAxis * yAxis;
             pushItemAboveInPQ(pq, xAxisSquare,  yAxis);
         }

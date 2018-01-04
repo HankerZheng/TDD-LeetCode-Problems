@@ -88,12 +88,12 @@ public class SuperUglyNumber {
 
     private void pollFromPQ(PriorityQueue<TwoValueMinPQItem> pq, int idx) {
         final TwoValueMinPQItem thisItem = pq.poll();
-        int thisNum = thisItem.getValue();
+        int thisNum = thisItem.getLeft();
         result[idx] = thisNum;
-        int primeIdx = thisItem.getIndex();
-        while (pq.peek().getValue() <= thisNum) {
+        int primeIdx = thisItem.getRight();
+        while (pq.peek().getLeft() <= thisNum) {
             final TwoValueMinPQItem newItem = pq.poll();
-            addNewToPQ(pq, newItem.getIndex());
+            addNewToPQ(pq, newItem.getRight());
         }
         addNewToPQ(pq, primeIdx);
     }

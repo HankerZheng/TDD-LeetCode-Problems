@@ -1,24 +1,24 @@
 package com.hankerzheng.tddleet;
 
 public class TwoValueMinPQItem implements Comparable<TwoValueMinPQItem> {
-    private int value;
-    private int index;
+    private int left;
+    private int right;
 
-    TwoValueMinPQItem(int value, int index) {
-        this.value = value;
-        this.index = index;
+    TwoValueMinPQItem(int left, int right) {
+        this.left = left;
+        this.right = right;
     }
 
-    public int getValue() {
-        return value;
+    public int getLeft() {
+        return left;
     }
 
-    public int getIndex() {
-        return index;
+    public int getRight() {
+        return right;
     }
 
     @Override
     public int compareTo(TwoValueMinPQItem o) {
-        return this.getValue() - o.getValue();
+        return this.getLeft() - o.getLeft();
     }
 }
