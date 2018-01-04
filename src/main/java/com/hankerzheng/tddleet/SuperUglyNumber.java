@@ -25,6 +25,44 @@ import java.util.PriorityQueue;
 
 public class SuperUglyNumber {
 
+    /**
+     * MY THOUGHTS:
+     *
+     * If we find the first k ugly number, then next k + 1 ugly number must be one of the already-found ugly
+     * number times the given primes. Thus, we can use a Priority Queue to store all the candidate.
+     *
+     * In order to keep the size of Priority Queue steady, for each prime, we should know with which ugly number
+     * it has been multiplied. For example, given primes as [5,7,11], we have the indexes array as [0, 0, 0], and
+     * result array as [1, ... ].
+     *
+     * Candidates for the 2nd ugly number would be MIN(5 * result[0], 7 * result[0], 11 * result[0]). Apparently, 5
+     * is the smallest number in the PQ. We add 5 into the result list and increase the indexes array of 5 by 1.
+     * Then we have:
+     *      result: [1, 5, ...]
+     *      indexes: [1, 0, 0]
+     *
+     * Now, the candidates could be [5 * result[1], 7 * result[0], 8 * result[0]], where  7 is next ugly number.
+     *                              [   25,             7,              8       ]
+     * Then, the arrays would be updated to
+     *      result: [1, 5, 7, ...]
+     *      indexes: [1, 1, 0]
+     *      candidates: [25 (5 * 5), 35 (7 * 5), 11 (11 * 1)]
+     *
+     * The next step would be
+     *      result: [1, 5 ,7, 11, ...]
+     *      indexes: [1, 1, 1]
+     *      indexes: [25, 35, 55 (11 * 5)]
+     *
+     * So on so forth, we can finally get the K-th ugly number.
+     *
+     *
+     *
+     * Note: there would be duplicate number in the PQ, so every time when we poll something from the PQ, we also
+     *       need to check whether the next largest is equal to the first one. If true, poll that out, too.
+     *
+     */
+
+
     private int[] primes;
     private int[] indexes;
     private int[] result;
