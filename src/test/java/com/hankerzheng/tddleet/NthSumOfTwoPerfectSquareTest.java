@@ -27,7 +27,7 @@ public class NthSumOfTwoPerfectSquareTest {
 
     @Test
     public void shouldNotHaveDuplicate25() throws Exception {
-        verify(15, 40);
+        verify(40, 15);
     }
 
     @Test
