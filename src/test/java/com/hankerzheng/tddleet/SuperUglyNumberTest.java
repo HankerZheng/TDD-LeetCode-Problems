@@ -18,6 +18,11 @@ public class SuperUglyNumberTest {
         verify(32, 12, 2, 7, 13, 19);
     }
 
+    @Test
+    public void shouldPassIfOnlyOnePrimes() throws Exception {
+        verify(1024, 10, 2);
+    }
+
     private void verify(final int expected, int n, int ... primes) {
         assertEquals(expected, superUglyNumber.nthSuperUglyNumber(n, primes));
     }
