@@ -28,6 +28,26 @@ import java.util.PriorityQueue;
 
 public class NthSumOfTwoPerfectSquare {
 
+    /**
+     * MY THOUGHTS:
+     *
+     * We can consider all the candidate in a triangle matrix, each candidate can be represented as one value
+     * in that matrix as below
+     *
+     *                    ..
+     *                32  ..
+     *            18  25  ..
+     *         8  13  20  ..
+     *      2  5  10  17  ..
+     *
+     *  Since the numbers at row 0 must be the smallest number of that column, we could start the priority queue
+     *  with these number.
+     *  Once we poll one number from PQ, we push the number above into the PQ until we find the n-th number.
+     *
+     * @param n
+     * @return
+     */
+
     public int nthSumOfPerfectSquare(int n) {
         final PriorityQueue<TwoValueMinPQItem> pq = new PriorityQueue<>();
         for (int i = 0; i < n; i++) {
