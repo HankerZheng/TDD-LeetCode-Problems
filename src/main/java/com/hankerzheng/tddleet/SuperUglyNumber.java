@@ -76,9 +76,9 @@ public class SuperUglyNumber {
         this.indexes = new int[primes.length];
         this.result = new int[n];
         result[0] = 1;
-        final PriorityQueue<UglyNumberPQItem> pq = new PriorityQueue<>();
+        final PriorityQueue<TwoValueMinPQItem> pq = new PriorityQueue<>();
         for (int i = 0; i < primes.length; i++) {
-            pq.add( new UglyNumberPQItem(primes[i] * result[indexes[i]], i));
+            pq.add( new TwoValueMinPQItem(primes[i] * result[indexes[i]], i));
         }
         for (int currentIdx = 1; currentIdx < n; currentIdx++) {
             pollFromPQ(pq, currentIdx);
@@ -86,23 +86,22 @@ public class SuperUglyNumber {
         return result[n - 1];
     }
 
-    private int pollFromPQ(PriorityQueue<UglyNumberPQItem> pq, int idx) {
-        final UglyNumberPQItem thisItem = pq.poll();
+    private void pollFromPQ(PriorityQueue<TwoValueMinPQItem> pq, int idx) {
+        final TwoValueMinPQItem thisItem = pq.poll();
         int thisNum = thisItem.getValue();
         result[idx] = thisNum;
         int primeIdx = thisItem.getIndex();
         while (pq.peek().getValue() <= thisNum) {
-            final UglyNumberPQItem newItem = pq.poll();
+            final TwoValueMinPQItem newItem = pq.poll();
             addNewToPQ(pq, newItem.getIndex());
         }
         addNewToPQ(pq, primeIdx);
-        return thisNum;
     }
 
-    private void addNewToPQ(PriorityQueue<UglyNumberPQItem> pq, int primesIdx) {
+    private void addNewToPQ(PriorityQueue<TwoValueMinPQItem> pq, int primesIdx) {
         indexes[primesIdx]++;
         int nextNum = primes[primesIdx] * result[indexes[primesIdx]];
-        pq.add(new UglyNumberPQItem(nextNum, primesIdx));
+        pq.add(new TwoValueMinPQItem(nextNum, primesIdx));
     }
 
 }
