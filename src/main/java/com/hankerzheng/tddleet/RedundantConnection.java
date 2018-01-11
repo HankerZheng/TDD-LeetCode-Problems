@@ -57,7 +57,7 @@ public class RedundantConnection {
 
 
     public int[] findRedundantConnection(int[][] edges) {
-        final UnionFind unionFind = new UnionFind(edges.length * 2);
+        final UnionFind unionFind = new UnionFind(edges.length + 1);
         for (int[] edge: edges) {
             int leftParent = unionFind.find(edge[0]);
             int rightParent = unionFind.find(edge[1]);

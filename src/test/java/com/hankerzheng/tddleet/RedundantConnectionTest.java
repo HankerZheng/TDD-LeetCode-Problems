@@ -17,7 +17,9 @@ public class RedundantConnectionTest {
 
     @Test
     public void shouldReturnNullIfNoCycle() throws Exception {
-        assertNull(redundantConnection.findRedundantConnection(consturctEdges(1, 2, 3, 4, 5, 6)));
+        assertNull(
+                redundantConnection.findRedundantConnection(consturctEdges(1, 2, 2, 3, 3, 4, 4, 5, 5, 6))
+        );
     }
 
     @Test
