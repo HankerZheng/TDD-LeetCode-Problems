@@ -22,14 +22,13 @@ public class UnionFind {
     public void union(final int a, final int b) {
         final int parentA = find(a);
         final int parentB = find(b);
-        status[parentA] += status[parentB];
-        status[parentB] = parentA;
+        if (parentA != parentB) {
+            status[parentA] += status[parentB];
+            status[parentB] = parentA;
+        }
     }
 
     public int find(final int a) {
-        if (a < 0) {
-            return a;
-        }
         final List<Integer> setA = new LinkedList<>();
         int thisNode = a;
         while (status[thisNode] > 0) {

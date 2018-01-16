@@ -36,6 +36,15 @@ public class UnionFindTest {
         assertEquals(3, unionFind.count(1));
         assertEquals(3, unionFind.count(2));
         assertEquals(3, unionFind.count(3));
+    }
 
+    @Test
+    public void testUnionFindOnFailedExample() throws Exception {
+        final UnionFind unionFind = new UnionFind(6);
+        unionFind.union(1, 2);
+        unionFind.union(2, 3);
+        unionFind.union(3, 4);
+        unionFind.union(1, 4);
+        unionFind.union(1, 5);
     }
 }
