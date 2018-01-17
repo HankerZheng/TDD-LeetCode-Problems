@@ -22,7 +22,7 @@ public class LCAofBT {
      *      Once we find the matching node first time, we mark a potentialAns in the
      *      current parentStack. Then, the final answer could only be the node in the
      *      parentStack, that is, all the parent of the current matching node.
-     *      
+     *
      *      Keep traversing and update the potentialAns. The updating of potentialAns
      *      could only move up never down.
      *
