@@ -1,6 +1,17 @@
 package com.hankerzheng.tddleet;
 
 public class SymmetricTree {
+
+    static class FouraryTreeNode {
+        public int val;
+        public FouraryTreeNode[] children;
+
+        public FouraryTreeNode(final int val) {
+            this.val = val;
+            this.children = new FouraryTreeNode[4];
+        }
+    }
+
     boolean isSymmetricTree(final FouraryTreeNode root) {
         if (root == null) {
             return true;
@@ -29,12 +40,4 @@ public class SymmetricTree {
     }
 }
 
-class FouraryTreeNode {
-    public int val;
-    public FouraryTreeNode[] children;
 
-    public FouraryTreeNode(final int val) {
-        this.val = val;
-        this.children = new FouraryTreeNode[4];
-    }
-}
