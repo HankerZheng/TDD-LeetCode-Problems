@@ -40,6 +40,7 @@ public class SwimInRisingWaterTest {
     }
 
     private void verify(final int expected, final int[][] grid) {
-        assertEquals(expected, swimInRisingWater.swimInWater(grid));
+        assertEquals(expected, swimInRisingWater.swimInWaterUnionFind(grid));
+        assertEquals(expected, swimInRisingWater.swimInWaterBFS(grid));
     }
 }
